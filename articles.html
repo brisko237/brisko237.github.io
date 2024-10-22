@@ -26,6 +26,27 @@
             flex: 1;
         }
 
+        /* Style du header */
+        header {
+            background-color: #1E1E1E;
+            color: white;
+            text-align: center;
+            padding: 20px 0; /* Réduction du padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style de la photo de profil dans le header */
+        .profile-pic {
+            width: 120px; /* Taille de la photo */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px; /* Espace sous la photo */
+            cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+        }
+
         /* Section des articles */
         .articles-section {
             max-width: 800px;
@@ -39,6 +60,32 @@
             font-size: 2.2em;
             font-weight: 600;
             margin-bottom: 30px;
+        }
+
+        /* Style du fil d'Ariane */
+        .breadcrumb {
+            margin: 0 auto 30px; /* Marge inférieure pour espacer du contenu principal */
+            max-width: 800px; /* Même largeur que le contenu principal */
+            color: #e0e0e0; /* Couleur du texte */
+            font-size: 1em; /* Taille de la police */
+            text-align: center; /* Centre le texte */
+            padding: 10px 0; /* Ajout d'un padding vertical pour espacer le texte */
+        }
+
+        .breadcrumb a {
+            color: #CCCCCC; /* Couleur d'Accueil */
+            text-decoration: none;
+            transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+        }
+
+        .breadcrumb a:last-child {
+            color: #0077b5; /* Couleur de "Mes articles" */
+            font-weight: bold; /* Écriture en gras */
+        }
+
+        .breadcrumb a:hover {
+            color: red; /* Changement de couleur au survol */
+            text-decoration: underline; /* Surlignement au survol */
         }
 
         /* Style des bulles d'articles */
@@ -115,21 +162,33 @@
 </head>
 <body>
 
+    <header>
+        <!-- Ajoute ta photo de profil ici avec lien vers la page d'accueil -->
+        <a href="index.html">
+            <img src="images/photo.jpg" alt="Brice Temo" class="profile-pic">
+        </a>
+    </header>
+
     <main>
         <section class="articles-section">
+            <!-- Fil d'Ariane -->
+            <nav class="breadcrumb">
+                <a href="index.html">Accueil</a> > <a href="articles.html">Mes articles</a>
+            </nav>
+
             <!-- Titre des articles centré -->
             <h1 class="articles-title">Mes articles</h1>
 
             <!-- Première bulle d'article -->
             <div class="article-box" onclick="window.location.href='#';">
                 <h2>My experience on CompTIA Network+</h2>
-                <p class="date">Publié le 26 dec 2023</p>
+                <p class="date">Publié le 26 déc 2023</p>
             </div>
 
             <!-- Deuxième bulle d'article -->
             <div class="article-box" onclick="window.location.href='articles/ntlm-what-is-it.html';">
                 <h2>NTLM, what is it ?</h2>
-                <p class="date">24 dec 2023</p>
+                <p class="date">24 déc 2023</p>
             </div>
         </section>
     </main>
