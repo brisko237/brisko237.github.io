@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTLM, what is it ?</title>
+    <style>
+        /* Importation des polices Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        /* Style global du body */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Couleur de fond principale */
+            color: #e0e0e0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main pour occuper tout l'espace disponible */
+        main {
+            flex: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Header stylisé pour afficher le titre de l'article */
+        header {
+            background-color: #1E1E1E;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        /* Style du contenu de l'article */
+        .article-content {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .article-content p {
+            font-size: 1.1em;
+            color: #CCCCCC;
+            margin-bottom: 20px;
+        }
+
+        /* Style du footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries pour rendre la page responsive */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2em;
+            }
+
+            .article-content h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8em;
+            }
+
+            .article-content h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Titre de l'article -->
+        NTLM, what is it ?
+    </header>
+
+    <main>
+        <section class="article-content">
+            <!-- Ajout de la mention FR Version et du drapeau -->
+            <div class="language-version">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" style="width: 20px; height: 15px; vertical-align: middle; margin-right: 5px;">
+                [FR Version]
+            </div>
+            <h2>NTLM, c’est quoi ?</h2>
+    
+            <p>
+                Le protocole d’authentification NTLM (New Technology LAN Manager) c’est tout simplement une méthode utilisée par les OS Windows pour vérifier l’identité des utilisateurs et des ordinateurs, actuellement il en existe 3 versions LM, NTLM v1, NTLM v2.
+                Développé par Microsoft, le NTLM fonctionne sur un mécanisme de défi/réponse, où un serveur demande à l’utilisateur de prouver qu’il connaît le mot de passe associé à son compte.
+            </p>
+
+            <h2>Comment ça fonctionne ?</h2>
+            <p>
+                Le NTLM fonctionne différement dépendamment du contexte (compte local ou compte de domaine).
+            </p>
+
+            <h2>Authentification Compte local vs Compte de domaine :</h2>
+            <h1>Compte Local</h1>           
+                <ol>
+                    <li>L’utilisateur entre son nom d’utilisateur et son mot de passe.</li>
+                    <li>Le système d’exploitation va chercher les informations associées à ce compte dans la base SAM, (C:\Windows\System32\config\SAM).</li>
+                    <li>Le système utilise le protocole NTLM pour vérifier que le hash du mot de passe saisi par l’utilisateur correspond au hash du mot de passe stocké dans la base SAM.</li>
+                    <li>Si le hash du mot de passe entré est bien le même que celui contenu dans la base SAM, l’utilisateur est authentifié et peut accéder à sa session Windows.</li>
+                </ol>
+
+            <h1>Compte de Domaine</h1>
+                <ol>
+                    <li>L’utilisateur entre son nom d’utilisateur et son mot de passe.</li>
+                    <li>Le client (ordinateur de l’utilisateur) communique avec le contrôleur de domaine et indique qu’il souhaite utiliser le protocole NTLM pour l’authentification.</li>
+                    <li>Le contrôleur de domaine génère un défi (une valeur aléatoire de 8 octets) qui sera envoyée au client, lui demandant de prouver qu’il connaît le mot de passe associé à son compte.</li>
+                    <li>Le client prend ce défi et l’utilise, en combinaison avec le mot de passe de l’utilisateur, pour générer une “réponse” (un hash) qui sera envoyée au contrôleur de domaine.</li>
+                    <li>Le contrôleur de domaine reçoit cette “réponse” (le hash) du client et effectue une vérification.</li>
+                    <li>Si la réponse du client correspond à celle que le contrôleur de domaine attend (qui est calculée en utilisant le même défi et le mot de passe stocké dans la base de données NTDS.dit), l’utilisateur est authentifié.</li>
+                </ol>
+            <p>Ci-dessous un schéma du procédé de l’authentification NTLM.</p>
+
+            <h2>Sécurité et NTLM</h2>
+            <p>
+                Il est important de souligner que le NTLM est un protocole à ne plus utiliser car trop peu sécurisé étant donné qu’il transmet des informations d’identification sous forme de hash sur le réseau et cela peut engendrer des vulnérabilités en termes de sécurité, notamment via une attaque bien connue “Pass-The-Hash”
+            </p>
+            <h1>Attaque Pass-The-Hash</h1>
+            <p>
+                Rappelez-vous, lors de la dernière étape de processus d’authentification via NTLM à un compte de domaine, il suffit au client de répondre au contrôleur de domaine avec le hash de son mot de passe pour s’authentifier.
+                Un attaquant peut alors récupérer le hash du mot de passe et pourra lui aussi tout simplement s’authentifier.
+                Voilà ce qu’est simplement l’attaque Pass-The-Hash.
+                NTLM étant aujourd’hui déprécié par manque de sécurité, il est fortement conseillé d’utiliser le protocole Kerberos, beaucoup plus sécurisé !
+                
+                (j’en parlerai dans un prochain article).
+            </p>
+            
+            <h2>En bref,</h2>
+            <p>
+                <ul>
+                    <li>NTLM = Windows New Technology LAN Manager</li>
+                    <li>Suite de protocoles d’authentification (Windows)</li>
+                    <li>Utilisé pour vérifier l’identité d’un utilisateur et permet l’accès aux ressources du réseau</li>
+                    <li>Remplacé par Kerberos comme protocole d’authentification par défaut car Kerberos est plus sécurisé que NTLM</li>
+                    <li>Existe 3 versions NTLM : LM, NTLM v1, NTLM v2</li>
+                </ul>
+            </p>
+            <p>Merci de votre lecture.</p>
+            
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://linkedin.com/in/iamskyze" target="_blank">
+            LinkedIn
+        </a>
+    </footer>
+
+</body>
+</html>

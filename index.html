@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brice - Portfolio</title>
+    <style>
+        /* Importation des polices Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        /* Style global du body */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Header stylisé en noir avec photo et texte centré */
+        header {
+            background-color: #1E1E1E;
+            color: white;
+            text-align: center;
+            padding: 20px 0; /* Réduction du padding */
+            font-size: 2.5em; /* Réduction de la taille de la police */
+            font-weight: 600;
+            margin-bottom: 30px; /* Moins d'espace sous le header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style de la photo de profil dans le header */
+        .profile-pic {
+            width: 120px; /* Réduction de la taille de la photo */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px; /* Réduction de l'espace sous la photo */
+        }
+
+        /* Style principal du contenu */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Style des blocs cliquables (articles) */
+        .content-box {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style des titres des blocs */
+        .content-box h2 {
+            color: #FFFFFF;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .content-box p {
+            font-size: 1.1em;
+            color: #CCCCCC;
+        }
+
+        /* Style du footer avec lien LinkedIn */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+
+        /* Logo et lien LinkedIn */
+        footer a {
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style du logo LinkedIn */
+        footer img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries pour rendre la page responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+                font-size: 2em;
+            }
+
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+
+            .content-box h2 {
+                font-size: 1.6em;
+            }
+
+            .content-box p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 0;
+                font-size: 1.8em;
+            }
+
+            .profile-pic {
+                width: 90px;
+                height: 90px;
+            }
+
+            .content-box {
+                padding: 15px;
+            }
+
+            .content-box h2 {
+                font-size: 1.4em;
+            }
+
+            .content-box p {
+                font-size: 1em;
+            }
+
+            footer a {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Ajoute ta photo de profil ici -->
+        <img src="photo.jpg" alt="Brice Temo" class="profile-pic">
+        Brice Temo
+    </header>
+
+    <main>
+        <!-- Bloc pour "Mes articles" -->
+        <div class="content-box" onclick="window.location.href='articles.html';">
+            <h2>Mes articles</h2>
+            <p>Découvrez mes publications et analyses sur divers sujets techniques.</p>
+        </div>
+
+        <!-- Bloc pour "Mes projets" -->
+        <div class="content-box" onclick="window.location.href='#';">
+            <h2>Mes projets</h2>
+            <p>Explorez les projets sur lesquels j'ai travaillé.</p>
+        </div>
+
+        <!-- Bloc pour "Mon CV" -->
+        <div class="content-box" onclick="window.location.href='#';">
+            <h2>Mon CV</h2>
+            <p>Téléchargez ou consultez mon CV.</p>
+        </div>
+    </main>
+
+    <footer>
+        <a href="https://linkedin.com/in/iamskyze" target="_blank">
+            LinkedIn
+        </a>
+    </footer>
+
+</body>
+</html>
