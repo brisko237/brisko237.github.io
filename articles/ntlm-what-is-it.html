@@ -202,14 +202,23 @@
             </p>
             <h3>Attaque Pass-The-Hash</h3>
             <p>
-                Ce type d'attaque permet à un attaquant d'utiliser un hash d'authentification (au lieu d'un mot de passe en clair) pour se faire passer pour un utilisateur, souvent en utilisant des outils comme Mimikatz pour extraire des hash depuis un système compromis.
+                Rappelez-vous, lors de la dernière étape de processus d’authentification via NTLM à un compte de domaine, il suffit au client de répondre au contrôleur de domaine avec le hash de son mot de passe pour s’authentifier.
+                Un attaquant peut alors récupérer le hash du mot de passe et pourra lui aussi tout simplement s’authentifier.
+                Voilà ce qu’est simplement l’attaque Pass-The-Hash.
+                NTLM étant aujourd’hui déprécié par manque de sécurité, il est fortement conseillé d’utiliser le protocole Kerberos, beaucoup plus sécurisé !
+                (j’en parlerai dans un prochain article).
             </p>
-            <h2>Alternatives à NTLM</h2>
+            <h2>En bref,</h2>
+            <ul>
+                <li>NTLM = Windows New Technology LAN Manager</li>
+                <li>Suite de protocoles d’authentification (Windows)</li>
+                <li>Utilisé pour vérifier l’identité d’un utilisateur et permet l’accès aux ressources du réseau</li>
+                <li>Remplacé par Kerberos comme protocole d’authentification par défaut car Kerberos est plus sécurisé que NTLM</li>
+                <li>Existe 3 versions NTLM : LM, NTLM v1, NTLM v2</li>
+            </ul>
+            <br><br>
             <p>
-                La meilleure solution aujourd’hui est d’utiliser Kerberos qui est un protocole d’authentification plus sécurisé et qui ne transmet pas le mot de passe sur le réseau. Si vous êtes sur un domaine Active Directory, il est recommandé de privilégier Kerberos plutôt que NTLM pour l’authentification.
-            </p>
-            <p>
-                J'espère que cet article vous a permis de mieux comprendre le protocole NTLM et ses enjeux en matière de sécurité.
+                Merci de votre lecture.
             </p>
         </section>
     </main>
