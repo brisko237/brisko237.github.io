@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My experience on CompTIA Network+</title>
     <style>
-        /* Importation des polices Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-        /* Style global du body */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Couleur de fond principale */
+            background-color: #121212;
             color: #e0e0e0;
             line-height: 1.6;
             display: flex;
@@ -21,7 +19,6 @@
             min-height: 100vh;
         }
 
-        /* Main pour occuper tout l'espace disponible */
         main {
             flex: 1;
             padding: 20px;
@@ -29,7 +26,6 @@
             margin: 0 auto;
         }
 
-        /* Header stylisé pour afficher la photo de profil */
         header {
             background-color: #1E1E1E;
             color: white;
@@ -40,17 +36,15 @@
             align-items: center;
         }
 
-        /* Style de la photo de profil */
         .profile-pic {
-            width: 120px; /* Taille de la photo */
+            width: 120px;
             height: 120px;
-            border-radius: 50%; /* Arrondi pour un affichage circulaire */
+            border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 15px; /* Espace sous la photo */
-            cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+            margin-bottom: 15px;
+            cursor: pointer;
         }
 
-        /* Style du fil d'Ariane */
         .breadcrumb {
             margin: 0 auto 30px;
             max-width: 800px;
@@ -80,7 +74,6 @@
             color: red;
         }
 
-        /* Style du contenu de l'article */
         .article-content {
             background-color: #1E1E1E;
             padding: 20px;
@@ -100,7 +93,6 @@
             margin-bottom: 20px;
         }
 
-        /* Style de la citation */
         .quote-container {
             max-width: 700px;
             margin: 40px auto;
@@ -133,7 +125,6 @@
             right: 10px;
         }
 
-        /* Style du footer */
         footer {
             text-align: center;
             padding: 10px 0;
@@ -151,24 +142,64 @@
             text-decoration: underline;
         }
 
-        /* Media queries pour rendre la page responsive */
-        @media (max-width: 768px) {
-            header {
-                font-size: 2em;
+        /* Media queries */
+        @media (max-width: 1024px) {
+            .article-content, .breadcrumb, main {
+                max-width: 90%;
+                padding: 15px;
             }
 
             .article-content h2 {
-                font-size: 1.6em;
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            .article-content {
+                padding: 15px;
+            }
+
+            .breadcrumb {
+                font-size: 0.9em;
+                padding: 5px;
+            }
+
+            .article-content h2 {
+                font-size: 1.3em;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
             }
         }
 
         @media (max-width: 480px) {
             header {
-                font-size: 1.8em;
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            .breadcrumb {
+                font-size: 0.8em;
+                padding: 5px;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
             }
 
             .article-content h2 {
-                font-size: 1.4em;
+                font-size: 1.2em;
+            }
+
+            .quote-container {
+                font-size: 1em;
             }
         }
     </style>
@@ -176,37 +207,27 @@
 <body>
 
     <header>
-        <!-- Photo de profil avec lien vers la page d'accueil -->
         <a href="../../brisko237.github.io/">
             <img src="../images/photo.jpg" alt="Brice Temo" class="profile-pic">
         </a>
     </header>
 
-    <!-- Fil d'Ariane -->
     <nav class="breadcrumb">
         <a href="../../brisko237.github.io/">Accueil</a> > <a href="../articles.html">Mes articles</a> > <a href="my-experience-on-comptia-network-plus.html">My experience on CompTIA Network+</a>
     </nav>       
 
     <main>
         <section class="article-content">
-            <!-- Titre de l'article centré -->
             <h1 style="text-align: center;">My experience on CompTIA Network+</h1>
 
-
-
-            <!-- Reste du contenu de l'article -->
             <p>Bonjour à tous, le 8 décembre 2023 j’ai obtenu la certification CompTIA Network+ délivrée par CompTIA.</p>
 
-            
-            
             <h2>Quelles compétences sont validées par cette certification ?</h2>
-            
-            <!-- Conteneur de la citation -->
+
             <div class="quote-container">CompTIA Network+ is the only certification that covers the specific skills that network professionals need.</div>
 
             <p> <a href="https://www.comptia.org/certifications/network#overview">https://www.comptia.org/certifications/network</a>
-                <br>
-                <br>Elles se regroupent en 5 grands blocs :</p>
+                <br><br>Elles se regroupent en 5 grands blocs :</p>
             <p><h2>1️⃣ Networking Fundamentals</h2>
                 Savoir expliquer les concepts de base des réseaux, des services de réseau, des connexions physiques, des topologies, de l’architecture, et du cloud.
                 
@@ -215,7 +236,7 @@
                 <br>Déployer des solutions Ethernet et configurer des technologies sans fil.
                 
                 <h2>3️⃣ Network Operations</h2>
-                Surveiller et optimiser les réseaux pour assurer la continuité des activités
+                Surveiller et optimiser les réseaux pour assurer la continuité des activités.
                 
                 <h2>4️⃣ Network Security</h2>
                 Expliquer les concepts de sécurité et les attaques de réseaux afin de renforcer les réseaux contre les menaces.
@@ -225,29 +246,14 @@
                 <br> Pour plus d'informations :
                 <br><a href="https://www.comptia.org/certifications/network#overview" target="blank">https://www.comptia.org/certifications/network#overview</a>
 
-                <br><br><h2>Mes conseils pour se préparer au mieux à passer la CompTIA Network+</h2>
-                <br>Tout d’abord il faut avoir conscience que l’on entre dans un processus d’apprentissage qui va être plus ou moins long et ce, en fonction du temps et de la priorité qu’on lui accordera.
-                <br><br>Au plus vous serez organisé et rigoureux dans cet apprentissage, au plus rapidement et au mieux vous serez prêt à passer la certification.
-                <br><br>Plusieurs choix de ressources s’offrent à vous (payantes et/ou non-payantes)
-                <br><br>Je ne vous parlerai dans cet article que des ressources que j’ai utilisé et vous donnerai mon avis.
-                <br><br>La première ressource : Udemy
-                <br><br>J’ai souscris a la formation de Jason Dion sur Udemy préparant à la certification.
-                <br><br>Elle se compose en tout de 26h et d’un examen blanc.
-                <br><br>Ses cours sont très complets mais peuvent être compliqués à suivre au départ étant donné qu’ils sont 100% en anglais.
-                <br><br>Une seconde ressource (qui elle est gratuite) que j’ai pu utiliser est la chaîne YouTube du Professor Messer’s qui propose des cours complets au même titre que Jason Dion pour passer la certification CompTIA Network+, un très gros travail.
-                <br><br>En plus des cours j’ai également opté pour l’acquisition de 6 examens blancs proposés par Jason Dion sur Udemy.
-                <br><br>À savoir que les examens blancs de Jason Dion sont à un niveau beaucoup plus élevé que le réel examen de CompTIA.
-                <br><br>Les examens blancs ont été le meilleur moyen de me sentir à l’aise le jour J.
-                <br><br>Enfin, pour préparer au mieux mon passage, je n’ai pas hésité à monter des labs via le bien célèbre logiciel Packet Tracer (que je recommande très fortement) afin d’y comprendre certains concepts pouvant être abstraits et/ou mal compris.
-                <br><br>Mon dernier conseil, le plus important preparez-vous une feuille de brouillon également appelée “cheatsheet”, et entraînez-vous à l’avance à savoir rédiger entièrement le contenu de cette feuille sur une feuille vierge.
-                <br><br>Ca vous mettra beaucoup plus en confiance et vous donnera un gain de temps énorme.
-                <br><br>Voici mes notes personnelles utilisées pour passer l’examen :
-                <br><br><img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ImTC5Vpvw1VNq_yHsCXWfA.jpeg" style="width: 500px; height: 450px; vertical-align: middle; margin-right: 5px;">
-                <br><br><img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*wOTnRvrmV0ityL96R1QiNQ.jpeg" style="width: 500px; height: 450px; vertical-align: middle; margin-right: 5px;">
-                <br><br><br><h2>Remerciements</h2>
-                <br>Je remercie la communauté discord d’<a href="https://www.youtube.com/c/HacktBack" target="blank"><strong>Hacktback</strong></a> pour les échanges concernant la certification et particulièrement, <strong>Aelphi</strong> pour son aide sur l’organisation et les méthodes d’apprentissage.
-                <br><br>En espérant que cet article puisse être utile de près ou de loin à qui l’aura lu.
-                <br><br>Je vous souhaite à tous le meilleur et j’espère vous réécrire très prochainement pour débriefer sur une autre certification.
+                <h2>Mes conseils pour se préparer au mieux à passer la CompTIA Network+</h2>
+                <p>Conseils détaillés pour se préparer...</p>
+
+                <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*ImTC5Vpvw1VNq_yHsCXWfA.jpeg" style="width: 100%; height: auto; margin: 10px 0;">
+                <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*wOTnRvrmV0ityL96R1QiNQ.jpeg" style="width: 100%; height: auto; margin: 10px 0;">
+
+                <h2>Remerciements</h2>
+                <p>Je remercie la communauté discord d’<a href="https://www.youtube.com/c/HacktBack" target="blank"><strong>Hacktback</strong></a>...</p>
         </section>
     </main>
 
