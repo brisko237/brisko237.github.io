@@ -1,0 +1,7 @@
+L'idée de ce projet a été de découvrir comment l'automatisation du SOC améliore la réponse aux incidents et accélère la détection des menaces.
+
+
+
+Wazuh ? -> Plateforme open source de cybersécurité intégrant les fonctionnalités d'un SIEM et d'un XDR dans une seule solution.
+
+TheHive -> Plateforme de gestion des incidents de sécurité
