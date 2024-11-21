@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brice - Mes projets</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        header {
+            background-color: #1E1E1E;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .projets-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .projets-title {
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .breadcrumb {
+            margin: 0 auto 30px;
+            max-width: 800px;
+            color: #e0e0e0;
+            font-size: 1em;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .breadcrumb a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:last-child {
+            color: #0077b5;
+            font-weight: bold;
+        }
+
+        .breadcrumb a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        .projet-box {
+            background-color: #1E1E1E;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            color: #FFFFFF;
+        }
+
+        .projet-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .projet-box h2, .projet-box p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .projet-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9em;
+            background-color: #121212;
+        }
+
+        footer a {
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .projets-title {
+                font-size: 1.8em;
+            }
+
+            .projet-box h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projets-title {
+                font-size: 1.6em;
+            }
+
+            .projet-box h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../brisko237.github.io/">
+            <img src="images/photo.jpg" alt="Brice Temo" class="profile-pic">
+        </a>
+    </header>
+
+    <main>
+        <section class="projets-section">
+            <nav class="breadcrumb">
+                <a href="../brisko237.github.io/">Accueil</a> > <a href="projets.html">Mes projets</a>
+            </nav>
+
+            <h1 class="projets-title">Mes projets</h1>
+
+            <div class="projet-box" style="background-image: url('images/soc-automation.png');background-size: 100%; background-position: right;" onclick="window.location.href='projets/soc-automation.html';">
+                <h2>SOC Automation</h2>
+                <p class="date">19 nov 2024</p>
+            </div>
+
+            <div class="projet-box" style="background-image: url('images/loading.png'); background-size: 50%; background-position: center;" 
+                                    onclick="window.location.href='projets/';">
+                <h2>Keylogger</h2>
+                <p class="date">(soon... be patient)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://linkedin.com/in/iamskyze" target="_blank">
+            LinkedIn
+        </a>
+    </footer>
+
+</body>
+</html>
