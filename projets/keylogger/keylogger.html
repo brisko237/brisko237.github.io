@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keylogger</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            max-width: 1200px; /* Augmentation de la largeur max */
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #1E1E1E;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .terminal {
+            background-color: #2a2a2a;
+            color: #dcdcdc;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: inline-block;  /* Cette propriété permet de rendre le terminal "en ligne" */
+            width: auto;  /* La largeur s'ajuste au contenu */
+            max-width: 100%;  /* Empêche qu'il dépasse 100% de la largeur de son parent */
+        }
+
+        .breadcrumb {
+            margin: 0 auto 30px;
+            max-width: 1200px; /* Augmentation pour correspondre */
+            color: #e0e0e0;
+            font-size: 1em;
+            text-align: center;
+            padding: 10px 0;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .breadcrumb a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.01s ease;
+        }
+
+        .breadcrumb a:last-child {
+            color: #0077b5;
+            font-weight: bold;
+        }
+
+        .breadcrumb a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        .breadcrumb a:last-child:hover {
+            color: red;
+        }
+
+        .article-content {
+            background-color: #1E1E1E;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .article-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+
+        .article-content p {
+            font-size: 1.1em;
+            color: #CCCCCC;
+            margin-bottom: 20px;
+        }
+
+        .article-content img {
+            width: 100%; /* Images fluides */
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-container {
+            max-width: 1100px; /* Alignement avec l'élargissement */
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #333333;
+            color: #dcdcdc;
+            font-size: 1.2em;
+            font-style: italic;
+            border-left: 5px solid #0077b5;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .quote-container::before, .quote-container::after {
+            content: "“";
+            font-size: 2em;
+            color: #0077b5;
+            position: absolute;
+            font-weight: bold;
+        }
+
+        .quote-container::before {
+            top: -10px;
+            left: 10px;
+        }
+
+        .quote-container::after {
+            content: "”";
+            bottom: -10px;
+            right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #0077b5;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries */
+        @media (max-width: 1024px) {
+            .article-content, .breadcrumb, main {
+                max-width: 90%;
+                padding: 15px;
+            }
+
+            .article-content h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            .article-content {
+                padding: 15px;
+            }
+
+            .breadcrumb {
+                font-size: 0.9em;
+                padding: 5px;
+            }
+
+            .article-content h2 {
+                font-size: 1.3em;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            .breadcrumb {
+                font-size: 0.8em;
+                padding: 5px;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+
+            .article-content h2 {
+                font-size: 1.2em;
+            }
+
+            .quote-container {
+                font-size: 1em;
+            }
+        }
+        .vscode-container {
+            background-color: #1e1e1e; /* Fond sombre VSCode */
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #dcdcdc; /* Couleur du texte */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #007acc; /* Bordure bleue VSCode */
+        }
+
+        /* Style spécifique à la coloration syntaxique */
+        .keyword {
+            color: #569CD6; /* Couleur des mots-clés */
+        }
+        .module {
+            color: #DCDCAA; /* Couleur des modules */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../../brisko237.github.io/">
+            <img src="../../images/photo.jpg" alt="Brice Temo" class="profile-pic">
+        </a>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../brisko237.github.io/">Accueil</a> > <a href="../../projets.html">Mes projets</a> > <a href=keylogger.html">Keylogger</a>
+    </nav>       
+    <h1 style="text-align: center;">Keylogger</h1>
+    <main>
+        <section class="article-content">
+            <p>Ce projet a pour but premier d'appréhender le Python de manière plus ludique et pratique et ce en développant un keylogger.
+            <br>Il permet également d'approfondir certains concepts en python tels que la gestion des événements clavier, la manipulation des fichiers, et l'utilisation de bibliothèques externes comme pynput.
+            <br><br>Qu'est-ce qu'un keylogger ?
+            <br><br>Keylogger ou "enregistreur de frappe" en français est un programme de capture de clavier, qui comme son nom l'indique a pour but  d'enregistrer les touches frappées d'un clavier.
+            <br><br>Pour développer notre programme on va utiliser Python comme dit précédemment, et plus particulièrement la bibliothèque <a href="https://pypi.org/project/pynput/#description" target="_blank">pynput</a> qu'on va installer à l'aide de pip.
+            <br><br>Pourquoi ? 
+            <br><br>Car c'est une bibliothèque populaire pour intéragir avec le clavier et la souris.
+            <br>Cette bibliothèque une fois installée on va se rendre sur notre IDE préféré, VSCode.
+            <br><br>On crée alors un fichier qu'on va appeler keylogger.py qui sera ni plus ni moins que notre script python.
+            <br> On va, dans un premier temps y importer le module "keyboard" de la bibliothèque "pynput" qui va nous permettre d'écouter les frappes du clavier.
+            
+            <br><br><i>Importation du module "keyboard"</i>
+            <br><div class="terminal">from pynput import keyboard            </div>
+            <br><br>Puis on va faire en sorte d'afficher à l'écran la touche qui est pressée.
+            <br>La subtilité et qu'il  existe 2 types de touches les "standards" (a, b, c, @...) et les spéciales (Enter, Shift, Delete...) 
+            <br><br>Il va falloir dans notre script renseigner les 2 types de touches et pour ce faire on va utiliser deux blocs, try et except.
+            <br>try va nous permettre d'exécuter le bloc de code permettant d'afficher les touches standards.
+            <br>Si c'est une touche "spéciale" qui est frappée, c'est alors le bloc except qui permettra d'afficher la touche spéciale frappée.
+            <br><br><i>Blocs de code try et except</i>
+            <br><br><div class="vscode-container">
+            <code><span class="keyword">try:</span></code> 
+            <br><span class="module"></span>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Touche pressée : {key.char}")</code>
+            <br><span class="module"></span><span class="keyword">except</span> AttributeError:</code>
+            <br><span class="module"></span>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Touche spéciale : {key}")        </code>
+            </div>
+            <br><br>Enfin le module importé (keyboard) dispose également d'un listener que l'on va utiliser et qui nous permettra de surveiller les frappes du clavier.
+            <br><br><i>Blocs de code du listener</i>
+            <br><br><div class="vscode-container">
+                <span class="module"></span><span class="keyword">with</span> keyboard.Listener(on_press=on_press) as listener::</code>
+                <br><span class="module"></span>&nbsp;&nbsp;&nbsp;&nbsp;listener.join()</code>
+                </div>
+            <br><br><br>Dans ce bloc de code "(on_press=on_press)" signifie qu'à chaque fois qu'une touche est pressée la fonction on_press est exécutée.
+            <br>De plus, "listener.join()" est indispensable car il permet de rester en attente des entrées clavier, sans cette ligne le script s'arrêterait immédiatement après son lancement.
+            <br><br>Il faudra dans un premier temps décommenté les lignes suivantes "cluster.name", "node.name" et "http.port", en revanche il faudra modifier la ligne network.host en y ajoutant notre IP publique.
+            <br><br>Actuellement nos touches sont capturées !
+            <br><br>On peut désormais aller plus loin et faire en sorte que les touches frappées soient stockées au sein d'un fichier, intéressant !
+            <br><br>Pour ce faire on va modifier le script en spécifiant le fichier où stocker les frappes de clavier et dans la fonction on_press on va ajouter un bloc de code permettant d'ouvrir le fichier qui va recevoir les touches, enregistrer les touches "standards" au sein d'un bloc try et dans un bloc except on va enregistrer les touches dites "spéciales"
+            <br><br>Cela nous donne ceci :
+            <br><br><i>Code final keylogger</i>
+            <br><br><div class="vscode-container">
+                <span class="module"></span>
+                from pynput import keyboard
+            <br><br>log_file = "C:/Users/brice/projects/keylogger/keylog.txt"  # Nom du fichier où stocker les frappes
+                
+            <br><br>def on_press(key):
+            <br>    try:
+            <br>        with open(logs_file, "a") as f:  # Ouvre le fichier en mode ajout 
+            <br>            f.write(f"{key.char}")  # Enregistre les touches standards
+            <br>    except AttributeError:
+            <br>        with open(log_file, "a") as f:
+            <br>            f.write(f" [{key}] ")  # Enregistre les touches spéciales entre crochets
+            <br>
+            <br>with keyboard.Listener(on_press=on_press) as listener:
+            <br>    listener.join()
+            </code>
+            </div>
+            <br><br>Si on lance désormais notre script on s'aperçoit que dès lors que l'on touche au clavier, nos frappes sont bien enregistrées au sein d'un fichier "keylog.txt"
+
+            <img src="../../images/keylogger/keylogtxtfile.png" style="width: 70%; height: auto; margin: 10px auto; display: block;">
+            <img src="../../images/keylogger/keylogtxt.png" style="width: 30%; height: auto; margin: 20px auto; display: block;">
+
+            <br><br><br>Notre keylogger est désormais fonctionnel !
+            <br><br><br>Et ensuite ?
+            <br><br>Effectivement ce n'était que la première phase du projet, l'objectif final est de simuler un scénario d'attaque en utilisant ce keylogger (Red Team) et de répondre défensivement à celle-ci (Blue Team).
+            <br><br>Plus concrètement côté Red Team, l’objectif est de comprendre comment un attaquant pourrait exploiter ce keylogger dans un scénario réel (exécution du keylogger, stockage des frappes de manière discrète, et éventuellement son exfiltration des données).
+
+            <br><br>(Une version "pour aller plus loin" de ce projet consisterait à créer un workflow de "réponse" à l'alerte qui par exemple isolerait la machine hôte du réseau).
+            <br><br>Côté Blue Team cette fois-ci le but sera de détecter et bloquer efficacement ce keylogger. Cela implique potentiellement l’utilisation d’EDR, d’outils de supervision et de SIEM, ainsi que la mise en place de règles de détection basées sur des comportements suspects.
+            <br><br> Prochainement : Tester, contourner, détecter et bloquer notre propre keylogger🔥
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </p>
+        
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://linkedin.com/in/iamskyze" target="_blank">LinkedIn</a>
+    </footer>
+</body>
+</html>

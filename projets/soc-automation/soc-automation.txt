@@ -1,12 +1,15 @@
 L'idée de ce projet a été de découvrir comment l'automatisation du SOC améliore la réponse aux incidents et accélère la détection des menaces.
 
 
+Les éléments de ce lab : 
 
-Wazuh ? -> Plateforme open-source de cybersécurité intégrant les fonctionnalités d'un SIEM et d'un XDR dans une seule solution.
+(Cloud) Wazuh ? -> Plateforme open-source de cybersécurité intégrant les fonctionnalités d'un SIEM et d'un XDR dans une seule solution.
 
-TheHive -> Plateforme de gestion des incidents de sécurité
+(Cloud) TheHive -> Plateforme de gestion des incidents de sécurité
 
-Shuffle -> Plateforme open-source SOAR
+(Cloud) Shuffle -> Plateforme open-source SOAR
+
+(On-premise) Machine Windows 10 cliente
 
 Afin d'avoir une idée plus claire de comment tout cela va fonctionner voici un schéma du projet : 
 
@@ -15,7 +18,7 @@ Afin d'avoir une idée plus claire de comment tout cela va fonctionner voici un 
 La première étape a consisté à mettre en place une VM sous Windows 10 (qui dans notre cas représente le client windows au sein duquel va être installé l'agent Wazuh)
 
 On va au sein de ce client installé Sysmon qui est un service et driver fournit dans le package Sysinternals de Microsoft permettant la journalisation des évènements Windows surtout sur les évènements de sécurité système (ex : Création de processus, modification de l'heure de création d'un fichier, connexion réseau, modification de l'état du service Sysmon, 
-fin d'un processus, chargement de pilote, etc).
+fin d'un processus, chargement de pilote, etc...)
 Il va agir comme un outil de détection.
 
 Pour ce faire rien de plus, on se rend sur le site de Microsoft (https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) et on télécharge tout simplement Sysmon.
@@ -28,7 +31,7 @@ Maintenant que nous avons notre client windows 10 avec Sysmon, place à la deuxi
 
 Pour rappel, notre serveur Wazuh va recevoir les évènements provenant de l'agent (client Wndows 10)
 
-Quant à TheHive, il va tout simplement recevoir non pas les évènements mais les alertes et va nous permettre de gérer les incidents de sécurité
+Pour rappel, notre serveur Wazuh va recevoir les évènements provenant de l'agent (client Wndows 10)
 
 
 
@@ -274,7 +277,7 @@ On reçoit bien un mail sur notre boîte nous informant de l'utilisation de mimi
 <ajouter mail-received-socanalyst>
 
 Ce projet inspiré de la chaîne de YouTube de MyDFIR (https://www.youtube.com/@MyDFIR) touche à sa fin et m'aura permis de mettre en exergue l'automatisation au sein d'un environnement SOC par le biais notamment du SOAR.
-Cela permet de gagner ce qu'il y a bien souvent de plus précieux : du temps.
+Cela permet de gagner, ce qu'il y a bien souvent de plus précieux : du temps.
 Je vous remercie pour la lecture entière de ce projet que j'ai trouvé fort intéressant et passionnant à effectuer.
 Une version "pour aller plus loin" de ce projet consisterait à créer un workflow de "réponse" à l'alerte qui par exemple isolerait la machine hôte du réseau.
 
